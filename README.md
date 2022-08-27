@@ -15,7 +15,7 @@ Con esta app web estoy intentando reforzar aprendizajes y crear de nuevos, sobre
 - Rutas y parámetros de rutas.
 - Boostrap 4
 - Uso del HTTP para obtener información
-- >Uso de la API de Spotify para obtener información
+- Uso de la API de Spotify para obtener información
 - Trabajo sobre el manejo de data asíncrona.
 - ngModel para enlazar campos de texto a variables del componente
 - Observables
