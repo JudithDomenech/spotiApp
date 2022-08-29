@@ -6,13 +6,13 @@ import { SpotifyService } from 'src/app/service/spotify.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
 
   constructor(public _spotify: SpotifyService) { 
-    this._spotify.getArtistas()
+    this._spotify.getArtistas().subscribe((resp: any) => {
+      console.log(resp)
+    })
   }
 
-  ngOnInit(): void {
-  }
 
 }
