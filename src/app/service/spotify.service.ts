@@ -15,17 +15,17 @@ export class SpotifyService {
     console.log('Servicio activo!!');
   }
 
-  getArtistas() {
+  getArtistas(termino:string) {
     let url =
-      'https://api.spotify.com/v1/search?query=metalica&type=artist&market=US&locale=es-ES%2Ces%3Bq%3D0.9&offset=0&limit=20';
+      `https://api.spotify.com/v1/search?query=${ termino }&type=artist&market=US&locale=es-ES%2Ces%3Bq%3D0.9&offset=0&limit=20`;
 
     let headers = new HttpHeaders({
-      authorization:
-        'Bearer BQBevgHkbTaEsTPD0Hlc-wRE5UqENk9Ixap-JT4lGX7T5sqoZ0NWUxuIEWjyzPPYnFczQOOGncIhtBGCbguofKZLVjYYS2aWO7tGzcuUHRi619tJuDA',
+      'authorization':
+        'Bearer BQD0ZKIhQUdBg1wuc8mYoLxFb9AA2wdv_9z5vp-mieo2nR9RgPdyr22bCaaF77nC_aDOwKY_KMo1NX0ohrsaf7SfX8p3-zp1m8rNrc6BDlXhc3DtQQQ',
     });
 
     return this.http.get(url, { headers }).pipe(map((resp: any) => {
-      this.artistas =  resp.artists.items;
+      this.artistas = resp.artists.items;
       return this.artistas
     }));
   }
