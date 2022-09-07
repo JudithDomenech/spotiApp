@@ -7,9 +7,10 @@ import { map } from 'rxjs/operators';
 })
 export class SpotifyService {
   artistas: any[] = [];
+  pistas: any[] =[];
   urlSpotify: string = 'https://api.spotify.com/v1/';
   token: string =
-    'BQCjXAb4oVumspTdVaRrBzwfUjeleTgAygHD13HHZ6XZs9mjk1-OiFaiftDOJxF79JJLq99QVMVatljjvqSQedg85bvpwJs-ko6ojVUP6CA4D3ZDqOo';
+    '';
 
   constructor(public http: HttpClient) {
     console.log('Servicio activo!!');
@@ -22,16 +23,25 @@ export class SpotifyService {
     return headers;
   }
 
+  getTop(id: string){
+    let url = `${this.urlSpotify}artists/${id}/top-tracks?country=ES`
+
+    let headers = this.getHeaders();
+    
+    return this.http.get(url, { headers }).pipe(map((resp: any) => {
+        this.pistas = resp.tracks;
+        return this.pistas;
+      })
+    );
+
+  }
+
   getArtista(id: string) {
     let url = `${this.urlSpotify}artists/${id}`;
 
     let headers = this.getHeaders();
 
     return this.http.get(url, { headers });
-    //   .pipe(map((resp: any) => {
-    //   this.artistas = resp.artists.items;
-    //   return this.artistas
-    // }))
   }
 
   getArtistas(termino: string) {

@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class ArtistComponent implements OnInit {
   artista: any = {};
+  pistas: any[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,7 +26,15 @@ export class ArtistComponent implements OnInit {
         this._spotify.getArtista(id).subscribe((artista) => {
           console.log(artista);
           this.artista = artista
+          
         });
+
+        this._spotify.getTop(id).subscribe((pistas) => {
+          console.log(pistas);
+          this.pistas = pistas
+          
+        });
+
       });
   }
 }
